@@ -1,0 +1,35 @@
+
+Bandit Level 4 → Level 5
+Level Goal
+
+The password for the next level is stored in the only human-readable file in the inhere directory. 
+Tip: if your terminal is messed up, try the “reset” command.
+
+Commands you may need to solve this level
+
+ls, cd, cat, file, du, find
+
+At first we have to log in with "ssh bandit4@bandit.labs.overthewire.org -p 2220" and the hash from the previous level as the password.
+
+That sounds nice "if your terminal is messed up, try the “reset” command". Let's not mess something up :)
+Lets have a look into the directories.
+
+bandit4@bandit:~$ ls
+inhere
+bandit4@bandit:~$ cd inhere/
+bandit4@bandit:~/inhere$ ls
+-file00  -file01  -file02  -file03  -file04  -file05  -file06  -file07  -file08  -file09
+
+To read all this files sucks. Maybe we can find out the password without messing around with so many files.
+If I had to set up a CTF like this, I probably would place the password in one of the last files.
+So lets "cat" the last three, to see if I think like the creators.
+
+bandit4@bandit:~/inhere$ cat /home/bandit4/inhere/-file09
+5.9����l��bandit4@bandit:~/inhere$ 
+bandit4@bandit:~/inhere$ cat /home/bandit4/inhere/-file08
+_x).�U�f4k���M)[�?�"������Hٴ%bandit4@bandit:~/inhere$ 
+bandit4@bandit:~/inhere$ cat /home/bandit4/inhere/-file07
+koReBOKuIDDepwhWk7jZC0RTdopnAXXX
+
+Maybe I do not think so much different from the creators.
+Let's get to the next level.
