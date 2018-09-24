@@ -1,0 +1,22 @@
+Bandit Level 8 → Level 9
+Level Goal
+
+The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
+Commands you may need to solve this level
+
+grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+
+
+At first we have to log in with "ssh bandit8@bandit.labs.overthewire.org -p 2220" and the hash from the previous level as the password.
+
+bandit8@bandit:~$ ls
+data.txt
+
+I "cat" this file, just to see what Im dealing with.
+Man thats a lot of stuff. How can I find out the one unique line?
+
+bandit8@bandit:~$ sort data.txt | uniq -u
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQXXX
+
+That was as easy as the last level!
+The key is to look up the commands that you dont know!
