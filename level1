@@ -11,7 +11,7 @@ Commands you may need to solve this level
 ls, cd, cat, file, du, find
 
 
-I'm still logged on as user bandit0. If you are not, follow the instructions @ XXX
+I'm still logged on as user bandit0. If you are not, follow the instructions @ https://github.com/shendayan/bandit-wargame/blob/master/level0
 If you type in "ls" you should see something like this:
 
 bandit0@bandit:~$ ls
@@ -22,7 +22,7 @@ So type "cat readme" and hit enter.
 Now you should see this:
 
 bandit0@bandit:~$ cat readme 
-boJ9jbbUNNfktd78OOpsqOltutMcXXXX
+boJ9jbbUNNfktd78OOpsqOltutMc3XXX
 
 To avoid "cheating" I always "kill" the hashes with three X at the end.
-I appreceate helping you, but I dont wanna solve it for you!
+I appreciate helping you, but I dont wanna solve it for you!
