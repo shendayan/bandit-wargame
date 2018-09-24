@@ -1,0 +1,21 @@
+Bandit Level 1 → Level 2
+Level Goal
+
+The password for the next level is stored in a file called - located in the home directory
+
+Commands you may need to solve this level
+
+ls, cd, cat, file, du, find
+
+Now you can log in that new user with " ssh bandit1@bandit.labs.overthewire.org -p 2220" 
+and the hash from the previous level as the password.
+
+If you "ls" now, you can see a file with a dash as filename.
+You can't "cat" a file thats named "-" because cat awaits an argument after a dash.
+E.g. "cat -n" for numbering all the lines.
+So you have to use a little trick an type "cat /home/bandit1/-" and it should output something like that:
+
+bandit1@bandit:~$ cat /home/bandit1/- 
+CV1DtqXWVFXTvM2F0k09SHz0YwRINXXX
+
+Aaaaaand were good to go to the next level.
