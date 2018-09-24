@@ -1,0 +1,83 @@
+
+Bandit Level 6 → Level 7
+Level Goal
+
+The password for the next level is stored somewhere on the server and has all of the following properties:
+
+    owned by user bandit7
+    owned by group bandit6
+    33 bytes in size
+
+Commands you may need to solve this level
+
+ls, cd, cat, file, du, find, grep
+
+
+
+At first we have to log in with "ssh bandit6@bandit.labs.overthewire.org -p 2220" and the hash from the previous level as the password.
+
+For this task we need to take a closer look at the (referring to the manpage) "List FILEs"-tool.
+
+/*BEGINNER TIPP:
+*If you dont know: Most of the tools in a Linux distribution got a manual. You can open it with "man NAME".
+*So lets read a little of the "man ls".
+*
+*SYNOPSIS
+*       ls [OPTION]... [FILE]...
+*What means you have to write "ls -l /home/".
+*Which options could be useful now?
+*
+*-l     use a long listing format
+*For having a look at the user and group of a file.
+*-R, --recursive
+*             list subdirectories recursively
+*For looking into all directories in /
+*-s, --size
+*             print the allocated size of each file, in blocks
+*For using the size of the files as info for "grep".
+*BEGINNER TIPP END
+*/
+
+Lets have a look what "ls -lRs /" shows to us.
+Man, what a tree :D Thats way to much information... Lets reduce it a bit using the "grep" command.
+
+/*BEGINNER TIPP:
+*Lets have a closer look at the "grep" command.
+*The "grep" command lets you pick some special entries of a programs output.
+*For the basic use, you have to write "grep something" after the pipe.
+*E.g. "ls /home/ | grep mydata"
+*Grep has a very detailed manpage "man grep".
+*BEGINNER TIPP
+*/
+
+Maybe grepping the size and the owner could lead to a useful output.
+So I tried the following:
+
+bandit6@bandit:~$ ls -lRsa / | grep bandit7
+
+What lead to many "Permission denied" Errors and a huge output.
+But if we look closer at the list, we can see, that there are very few files.
+There are:
+
+4 -r--------  1 bandit7  bandit7    33 Sep 23 21:10 bandit7
+4088 -rw-r-----  1 bandit8 bandit7 4184396 Sep 23 21:10 data.txt
+4 -rw-r----- 1 bandit7 bandit6      33 Sep 23 21:10 bandit7.password
+
+The last entry looks promising, so lets "cat" it.
+Damn, we dont know the path to the file.
+
+To find out the path I used:
+
+bandit6@bandit:~$ find / -name "bandit7.password" | grep password
+
+Which lead to a massive "Permisson denied" swarm and one file....
+
+/var/lib/dpkg/info/bandit7.password
+
+So lets "cat" it.
+
+
+bandit6@bandit:~$ cat /var/lib/dpkg/info/bandit7.password
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKXXX
+
+Here we go.
