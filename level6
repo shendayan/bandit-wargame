@@ -1,0 +1,55 @@
+
+Bandit Level 5 → Level 6
+Level Goal
+
+The password for the next level is stored in a file somewhere under the inhere directory 
+and has all of the following properties:
+
+    human-readable
+    1033 bytes in size
+    not executable
+
+Commands you may need to solve this level
+
+ls, cd, cat, file, du, find
+
+At first we have to log in with "ssh bandit5@bandit.labs.overthewire.org -p 2220" and the hash from the previous level as the password.
+Let's have a look around:
+
+bandit5@bandit:~$ ls
+inhere
+bandit5@bandit:~$ cd inhere/
+bandit5@bandit:~/inhere$ ls -l
+total 80
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere00
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere01
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere02
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere03
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere04
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere05
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere06
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere07
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere08
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere09
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere10
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere11
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere12
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere13
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere14
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere15
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere16
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere17
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere18
+drwxr-x--- 2 root bandit5 4096 Sep 23 21:10 maybehere19
+
+Damn! Every directory has nine files and I really don't want to "cat" them all....
+Let's "find" the right file.
+
+If you are not familiar with the "find" command, you should look it up with "find --help".
+
+bandit5@bandit:~/inhere$ find -size 1033c
+./maybehere07/.file2
+bandit5@bandit:~/inhere$ cat ./maybehere07/.file2
+DXjZPULLxYr17uwoI01bNLQbtFemEXXX
+
+Here we go :)
