@@ -1,0 +1,21 @@
+Bandit Level 2 → Level 3
+Level Goal
+
+The password for the next level is stored in a file called spaces in this filename located in the home directory
+Commands you may need to solve this level
+
+ls, cd, cat, file, du, find
+
+We have to log in first with "ssh bandit2@bandit.labs.overthewire.org -p 2220" and the hash from the last level as the password.
+If you "ls" the contents of your current working directory, you should see a file named "spaces in this filename".
+There are more then one possibilities to read the content of this file.
+You can put the filename in quotes or write "cat s" and hit tab for autocompleting.
+
+You should have an output like this (depending on what method you used).
+
+bandit2@bandit:~$ cat spaces\ in\ this\ filename 
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5XXX
+bandit2@bandit:~$ cat "spaces in this filename" 
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5XXX
+
+Let's move on :)
